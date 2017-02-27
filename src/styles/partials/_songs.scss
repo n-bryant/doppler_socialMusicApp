@@ -1,0 +1,73 @@
+// current user display
+.user-data-container {
+  margin: 1rem 0 1rem 1rem;
+}
+
+// track list
+.songs-container {
+  margin: 2rem auto;
+  max-width: 800px;
+  width: 85%;
+
+  .songs-table {
+    .sortable {
+      cursor: pointer;
+
+      .sort-icon {
+        margin-left: .25rem;
+        width: 25px;
+        &.reverse {
+          transform: rotateX(180deg);
+        }
+      }
+    }
+  }
+}
+
+tr {
+  th, td {
+    width: 150px;
+  }
+
+  td {
+    padding: 1rem;
+    vertical-align: middle;
+
+    &.player-play, &.player-pause, &.player-save {
+      cursor: pointer;
+      width: 100px;
+    }
+    &.player-play, &.player-pause {
+      border-right: 4px solid $light;
+
+      &.active {
+        background: $orange;
+      }
+    }
+    &.more, &.player-save {
+      border-left: 4px solid $light;
+    }
+    &.player-save {
+      &.active {
+        background: $orange;
+      }
+    }
+  }
+}
+
+tbody {
+  tr {
+    &:nth-of-type(odd) {
+      background: $slate;
+      border: 4px solid $light;
+    }
+    &:nth-of-type(even) {
+      background: $sky;
+      border-left: 4px solid $light;
+      border-right: 4px solid $light;
+    }
+    &:last-of-type {
+      border-bottom: 4px solid $light;
+    }
+  }
+}

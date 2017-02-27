@@ -1,0 +1,38 @@
+header {
+  background: $slate;
+  overflow: hidden;
+  padding: 2rem;
+  position: relative;
+
+  .logo-container {
+    max-width: 230px;
+    .logo {
+      background: $sky;
+      border: 6px solid $light;
+      border-radius: 2rem;
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .title-container {
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: auto;
+  }
+
+  nav {
+    padding-right: 1rem;
+    position: absolute;
+    right: 0;
+
+    li {
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

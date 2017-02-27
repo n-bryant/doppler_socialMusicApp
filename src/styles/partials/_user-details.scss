@@ -1,0 +1,35 @@
+.full-user-container {
+  @extend .song-details-container;
+  position: relative;
+
+  .user-data-container {
+    flex-direction: column;
+
+    .avatar-container {
+      align-items: center;
+      margin-left: 1rem;
+      width: 25%;
+
+      .add-friend-btn {
+        background: $light;
+        cursor: pointer;
+        margin-left: 1rem;
+        width: 50px;
+
+        &.active {
+          background: $orange;
+        }
+      }
+    }
+
+    .data-container {
+      width: 100%;
+    }
+  }
+
+  .user-songs-container {
+    li {
+      cursor: pointer;
+    }
+  }
+}

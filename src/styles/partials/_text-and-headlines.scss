@@ -1,0 +1,212 @@
+body {
+  color: $slate;
+  font: 16px/1.6 $primaryFont;
+}
+
+a {
+  font: 16px/1.6 $primaryFont;
+  text-decoration: none;
+}
+
+/*
+header styles
+*/
+header {
+  color: $light;
+
+  .title {
+    font-size: 4rem;
+    font-weight: 800;
+  }
+
+  .subtitle {
+    font-size: .75rem;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  nav {
+    li {
+      &.active {
+        color: $sky;
+      }
+      &:hover {
+        color: $sky;
+      }
+    }
+  }
+}
+
+/*
+login page
+*/
+.about-container {
+  h2 {
+    font-size: 2rem;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+}
+
+.login-form {
+  label, input {
+    color: $light;
+    font: 300 1.5rem $primaryFont;
+  }
+  input {
+    color: $slate;
+  }
+  button {
+    color: $light;
+    font: 1.5rem $primaryFont;
+
+    &:active {
+      color: $slate;
+    }
+  }
+}
+
+/*
+welcome page
+*/
+.welcome-container {
+  .welcome-message {
+    font: 800 5rem $primaryFont;
+    text-transform: uppercase;
+
+    span {
+      color: $sky;
+      font: 300 3rem $primaryFont;
+      text-transform: lowercase;
+    }
+  }
+
+  .welcome-stats-list {
+    li {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+/*
+sidebar
+*/
+.sidebar-container {
+  .user-data-container {
+    .data-container {
+      color: $light;
+
+      .logout-btn {
+        color: $slate;
+        font-size: .75rem;
+        text-decoration: underline;
+
+        &:hover {
+          color: $light;
+        }
+      }
+    }
+  }
+}
+
+/*
+songs
+*/
+.user-data-container {
+  $color: $slate;
+
+  .logout-btn {
+    color: $slate;
+    font-size: .75rem;
+    text-decoration: underline;
+
+    &:hover {
+      color: $sky;
+    }
+  }
+}
+
+.songs-table {
+  thead {
+    color: $slate;
+  }
+  tbody {
+    tr {
+      &:nth-of-type(odd) {
+        color: $light;
+        a {
+          color: $light;
+        }
+      }
+      &:nth-of-type(even) {
+        color: $slate;
+        a {
+          color: $slate;
+        }
+      }
+    }
+  }
+}
+
+/*
+friends
+*/
+.other-users-container {
+  .user-data-container {
+    color: $light;
+  }
+}
+
+/*
+song details
+*/
+.song-details-container {
+  color: $light;
+
+  .artist-container {
+    h2 {
+      color: $orange;
+      font: 600 3rem $primaryFont;
+      text-decoration: underline;
+    }
+
+    .label {
+      color: $sky;
+    }
+  }
+
+  .player-container {
+    .song-title {
+      color: $orange;
+      font-size: 4rem;
+      text-decoration: underline;
+    }
+  }
+}
+
+/*
+user details
+*/
+.friend-container {
+  .data-container {
+    h2 {
+      color: $orange;
+      font: 600 3rem $primaryFont;
+      text-decoration: underline;
+    }
+    .user-login-date {
+      color: $sky;
+    }
+  }
+
+  .user-songs-container {
+    a {
+      color: $light;
+      font-family: $primaryFont;
+
+      &:hover {
+        color: $sky;
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+.welcome-wrapper {
+  margin-right: 400px;
+}
+
+// welcome message
+.welcome-container {
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 800px;
+  padding-top: 2rem;
+
+  .welcome-stats-list {
+    list-style: disc;
+    margin-bottom: 2rem;
+
+    li {
+      margin-left: 5rem;
+    }
+  }
+
+  .songs-container {
+    width: 100%;
+  }
+}
+
+// general sidebar
+.sidebar-container {
+  background: $sky;
+  bottom: 0;
+  height: 100vh;
+  right: 0;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  width: 400px;
+}
+
+// friends list
+.online-friends-container, .offline-friends-container {
+  margin-bottom: 1rem;
+
+  .avatar {
+    border-radius: 50%;
+    cursor: pointer;
+    width: 50px;
+  }
+  .friend-info-container {
+    flex-direction: column;
+    justify-content: center;
+    margin-left: .5rem;
+  }
+}
+
+.offline-friends-container {
+  .avatar {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+  }
+}

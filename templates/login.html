@@ -1,0 +1,30 @@
+<!--
+  Login:
+    -Users should be able to type in their username and password and click 'continue'.
+    -Their username should show up on all other pages.
+-->
+
+<header class="is-flex">
+  <div class="logo-container">
+    <img class="logo" src="images/logo.gif" alt="doppler effect diagram">
+  </div>
+  <div class="title-container is-flex">
+    <h1 class="title">doppler</h1>
+    <p class="subtitle">A social music app, connecting you with the latest sounds</p>
+  </div>
+</header>
+
+<main>
+  <section class="about-container">
+    <h2>What is doppler?</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur elementum magna et semper luctus. In vitae magna massa. Phasellus in laoreet lectus. Aenean eros nulla, rhoncus at massa ac, fermentum commodo ex. Nam sed commodo lorem, ut convallis ligula. Donec eget tortor sapien. Morbi malesuada, felis in bibendum dignissim, nibh quam egestas ex, eu commodo ante purus sit amet massa. Sed feugiat malesuada blandit. Ut ante justo, luctus at felis nec, posuere viverra nibh.</p>
+    <p>Fusce malesuada leo id sem condimentum, ac luctus quam semper. Cras ac ultricies ligula, at lobortis orci. In dapibus cursus feugiat. Aenean ullamcorper imperdiet metus, eget euismod elit tempor eu. Aenean porttitor mauris vitae ante consequat lacinia. Morbi scelerisque, ante vestibulum malesuada mattis, velit elit viverra augue, ac luctus erat sapien non magna. Morbi in ultrices erat, vel cursus est. Sed et venenatis tellus, et ornare risus.</p>
+  </section>
+
+  <section class="login-container">
+    <form name="loginForm" ng-submit="loginCtrl.authenticate(loginForm.username.$viewValue)" novalidate class="login-form is-flex">
+      <label for="username">username:<input ng-model="username" ng-required="true" name="username" type="text"></label>
+      <button class="login-submit" ng-disabled="loginForm.$invalid">continue</button>
+    </form>
+  </section>
+</main>

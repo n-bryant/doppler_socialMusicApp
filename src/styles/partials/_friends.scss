@@ -1,0 +1,44 @@
+.other-users-container {
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 auto;
+  max-width: 800px;
+
+  .user-data-container {
+    background: $slate;
+    border-radius: 25px;
+    flex-direction: column;
+    height: 300px;
+    margin: 0 auto 2rem auto;
+    padding: 1rem;
+    width: 250px;
+
+    .avatar-container {
+      border-bottom: 2px solid $light;
+      padding-bottom: .25rem;
+
+      .avatar {
+        border: 2px solid $sky;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: .25rem;
+      }
+    }
+  }
+
+  .data-container {
+    margin: 1rem 0;
+
+    .add-friend-btn {
+      background: $light;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 1rem auto 0 auto;
+      width: 50px;
+
+      &.active {
+        background: $orange;
+      }
+    }
+  }
+}

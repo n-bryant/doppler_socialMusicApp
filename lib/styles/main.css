@@ -1,0 +1,474 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+img {
+  border: 0;
+  height: auto;
+  max-width: 100%;
+  width: 100%; }
+
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  color: #262626;
+  font: 16px/1.6 "Poppins", sans-serif; }
+
+a {
+  font: 16px/1.6 "Poppins", sans-serif;
+  text-decoration: none; }
+
+/*
+header styles
+*/
+header {
+  color: #fafafa; }
+  header .title {
+    font-size: 4rem;
+    font-weight: 800; }
+  header .subtitle {
+    font-size: .75rem;
+    font-style: italic;
+    font-weight: 300; }
+  header nav li.active {
+    color: #649AFF; }
+  header nav li:hover {
+    color: #649AFF; }
+
+/*
+login page
+*/
+.about-container h2 {
+  font-size: 2rem;
+  text-decoration: underline;
+  font-weight: 600; }
+
+.login-form label, .login-form input {
+  color: #fafafa;
+  font: 300 1.5rem "Poppins", sans-serif; }
+
+.login-form input {
+  color: #262626; }
+
+.login-form button {
+  color: #fafafa;
+  font: 1.5rem "Poppins", sans-serif; }
+  .login-form button:active {
+    color: #262626; }
+
+/*
+welcome page
+*/
+.welcome-container .welcome-message {
+  font: 800 5rem "Poppins", sans-serif;
+  text-transform: uppercase; }
+  .welcome-container .welcome-message span {
+    color: #649AFF;
+    font: 300 3rem "Poppins", sans-serif;
+    text-transform: lowercase; }
+
+.welcome-container .welcome-stats-list li {
+  font-size: 1.5rem; }
+
+/*
+sidebar
+*/
+.sidebar-container .user-data-container .data-container {
+  color: #fafafa; }
+  .sidebar-container .user-data-container .data-container .logout-btn {
+    color: #262626;
+    font-size: .75rem;
+    text-decoration: underline; }
+    .sidebar-container .user-data-container .data-container .logout-btn:hover {
+      color: #fafafa; }
+
+/*
+songs
+*/
+.user-data-container .logout-btn {
+  color: #262626;
+  font-size: .75rem;
+  text-decoration: underline; }
+  .user-data-container .logout-btn:hover {
+    color: #649AFF; }
+
+.songs-table thead {
+  color: #262626; }
+
+.songs-table tbody tr:nth-of-type(odd) {
+  color: #fafafa; }
+  .songs-table tbody tr:nth-of-type(odd) a {
+    color: #fafafa; }
+
+.songs-table tbody tr:nth-of-type(even) {
+  color: #262626; }
+  .songs-table tbody tr:nth-of-type(even) a {
+    color: #262626; }
+
+/*
+friends
+*/
+.other-users-container .user-data-container {
+  color: #fafafa; }
+
+/*
+song details
+*/
+.song-details-container, .full-user-container {
+  color: #fafafa; }
+  .song-details-container .artist-container h2, .full-user-container .artist-container h2 {
+    color: #FFA500;
+    font: 600 3rem "Poppins", sans-serif;
+    text-decoration: underline; }
+  .song-details-container .artist-container .label, .full-user-container .artist-container .label {
+    color: #649AFF; }
+  .song-details-container .player-container .song-title, .full-user-container .player-container .song-title {
+    color: #FFA500;
+    font-size: 4rem;
+    text-decoration: underline; }
+
+/*
+user details
+*/
+.friend-container .data-container h2 {
+  color: #FFA500;
+  font: 600 3rem "Poppins", sans-serif;
+  text-decoration: underline; }
+
+.friend-container .data-container .user-login-date {
+  color: #649AFF; }
+
+.friend-container .user-songs-container a {
+  color: #fafafa;
+  font-family: "Poppins", sans-serif; }
+  .friend-container .user-songs-container a:hover {
+    color: #649AFF; }
+
+body {
+  background-color: #fafafa;
+  background-image: url("https://www.transparenttextures.com/patterns/whitey.png"); }
+
+main {
+  position: relative; }
+
+header {
+  background: #262626;
+  overflow: hidden;
+  padding: 2rem;
+  position: relative; }
+  header .logo-container {
+    max-width: 230px; }
+    header .logo-container .logo {
+      background: #649AFF;
+      border: 6px solid #fafafa;
+      border-radius: 2rem;
+      display: block;
+      width: 100%; }
+  header .title-container {
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: auto; }
+  header nav {
+    padding-right: 1rem;
+    position: absolute;
+    right: 0; }
+    header nav li {
+      cursor: pointer; }
+      header nav li:hover {
+        text-decoration: underline; }
+
+.about-container {
+  flex-direction: column;
+  float: left;
+  padding: 4rem;
+  width: 50%; }
+  .about-container h2 {
+    margin-bottom: .5rem;
+    text-align: center; }
+  .about-container p:first-of-type {
+    margin-bottom: 1rem; }
+
+.login-container {
+  float: right;
+  width: 50%; }
+  .login-container .login-form {
+    align-items: center;
+    background: #262626;
+    border: 6px solid #649AFF;
+    border-radius: 2rem;
+    height: 400px;
+    flex-direction: column;
+    justify-content: center;
+    margin: 3rem; }
+    .login-container .login-form input {
+      background: #fafafa;
+      border: 6px solid #649AFF;
+      display: block;
+      margin: .5rem auto 1rem auto;
+      padding: .25rem; }
+    .login-container .login-form button {
+      background: #262626;
+      border: 6px solid #649AFF;
+      border-radius: 2rem;
+      cursor: pointer; }
+      .login-container .login-form button:disabled {
+        cursor: not-allowed; }
+      .login-container .login-form button:active {
+        background: #fafafa; }
+
+.welcome-wrapper {
+  margin-right: 400px; }
+
+.welcome-container {
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 800px;
+  padding-top: 2rem; }
+  .welcome-container .welcome-stats-list {
+    list-style: disc;
+    margin-bottom: 2rem; }
+    .welcome-container .welcome-stats-list li {
+      margin-left: 5rem; }
+  .welcome-container .songs-container {
+    width: 100%; }
+
+.sidebar-container {
+  background: #649AFF;
+  bottom: 0;
+  height: 100vh;
+  right: 0;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  width: 400px; }
+
+.online-friends-container, .offline-friends-container {
+  margin-bottom: 1rem; }
+  .online-friends-container .avatar, .offline-friends-container .avatar {
+    border-radius: 50%;
+    cursor: pointer;
+    width: 50px; }
+  .online-friends-container .friend-info-container, .offline-friends-container .friend-info-container {
+    flex-direction: column;
+    justify-content: center;
+    margin-left: .5rem; }
+
+.offline-friends-container .avatar {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%); }
+
+.user-data-container .avatar-container .avatar {
+  border-radius: 50%;
+  max-width: 100px; }
+
+.user-data-container .data-container {
+  flex-direction: column;
+  justify-content: center;
+  margin-left: .5rem; }
+  .user-data-container .data-container .user-nm {
+    justify-content: space-between; }
+    .user-data-container .data-container .user-nm .logout-btn {
+      background: none;
+      border: none;
+      cursor: pointer; }
+
+.user-data-container {
+  margin: 1rem 0 1rem 1rem; }
+
+.songs-container {
+  margin: 2rem auto;
+  max-width: 800px;
+  width: 85%; }
+  .songs-container .songs-table .sortable {
+    cursor: pointer; }
+    .songs-container .songs-table .sortable .sort-icon {
+      margin-left: .25rem;
+      width: 25px; }
+      .songs-container .songs-table .sortable .sort-icon.reverse {
+        transform: rotateX(180deg); }
+
+tr th, tr td {
+  width: 150px; }
+
+tr td {
+  padding: 1rem;
+  vertical-align: middle; }
+  tr td.player-play, tr td.player-pause, tr td.player-save {
+    cursor: pointer;
+    width: 100px; }
+  tr td.player-play, tr td.player-pause {
+    border-right: 4px solid #fafafa; }
+    tr td.player-play.active, tr td.player-pause.active {
+      background: #FFA500; }
+  tr td.more, tr td.player-save {
+    border-left: 4px solid #fafafa; }
+  tr td.player-save.active {
+    background: #FFA500; }
+
+tbody tr:nth-of-type(odd) {
+  background: #262626;
+  border: 4px solid #fafafa; }
+
+tbody tr:nth-of-type(even) {
+  background: #649AFF;
+  border-left: 4px solid #fafafa;
+  border-right: 4px solid #fafafa; }
+
+tbody tr:last-of-type {
+  border-bottom: 4px solid #fafafa; }
+
+.other-users-container {
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 auto;
+  max-width: 800px; }
+  .other-users-container .user-data-container {
+    background: #262626;
+    border-radius: 25px;
+    flex-direction: column;
+    height: 300px;
+    margin: 0 auto 2rem auto;
+    padding: 1rem;
+    width: 250px; }
+    .other-users-container .user-data-container .avatar-container {
+      border-bottom: 2px solid #fafafa;
+      padding-bottom: .25rem; }
+      .other-users-container .user-data-container .avatar-container .avatar {
+        border: 2px solid #649AFF;
+        border-radius: 50%;
+        cursor: pointer;
+        padding: .25rem; }
+  .other-users-container .data-container {
+    margin: 1rem 0; }
+    .other-users-container .data-container .add-friend-btn {
+      background: #fafafa;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 1rem auto 0 auto;
+      width: 50px; }
+      .other-users-container .data-container .add-friend-btn.active {
+        background: #FFA500; }
+
+.song-details-container, .full-user-container {
+  background: #262626;
+  border-radius: 25px;
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 2rem; }
+
+.details-container {
+  margin-bottom: 1rem; }
+  .details-container .album-container {
+    width: 100%; }
+    .details-container .album-container img {
+      border: 2px solid #fafafa; }
+    .details-container .album-container .release-info {
+      justify-content: space-between;
+      padding: 0 .5rem; }
+  .details-container .artist-container {
+    flex-direction: column;
+    margin-left: 2rem;
+    width: 100%; }
+
+.player-container .player-controls {
+  justify-content: center; }
+  .player-container .player-controls div {
+    border: 2px solid #fafafa;
+    cursor: pointer;
+    height: 150px;
+    padding: 1rem;
+    width: 150px; }
+    .player-container .player-controls div.active {
+      background: #FFA500; }
+  .player-container .player-controls .player-save {
+    align-items: center;
+    justify-content: center; }
+
+.full-user-container {
+  position: relative; }
+  .full-user-container .user-data-container {
+    flex-direction: column; }
+    .full-user-container .user-data-container .avatar-container {
+      align-items: center;
+      margin-left: 1rem;
+      width: 25%; }
+      .full-user-container .user-data-container .avatar-container .add-friend-btn {
+        background: #fafafa;
+        cursor: pointer;
+        margin-left: 1rem;
+        width: 50px; }
+        .full-user-container .user-data-container .avatar-container .add-friend-btn.active {
+          background: #FFA500; }
+    .full-user-container .user-data-container .data-container {
+      width: 100%; }
+  .full-user-container .user-songs-container li {
+    cursor: pointer; }
+
+.is-centered {
+  text-align: center; }
+
+.is-flex {
+  display: flex; }
+
+.dark-bottom-border {
+  border-bottom: 1px solid #262626; }
+
+.dark-upper-border {
+  border-top: 1px solid rgba(0, 0, 0, 0.05); }
+
+.is-hidden {
+  display: none; }
+
+.is-affixed {
+  visibility: visible;
+  transform: translateY(-65px);
+  position: fixed;
+  background: #fff;
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.15); }

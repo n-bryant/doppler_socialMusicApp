@@ -1,0 +1,69 @@
+<!--
+  /songs:
+    -should list all songs, including a song title and artist name. You can use whatever songs you want.
+    -Songs should be sortable by at least song title and artist name.
+    -You should be able to see a detailed view for songs by clicking on a song name.
+-->
+
+<header class="is-flex">
+  <div class="logo-container">
+    <img class="logo" src="images/logo.gif" alt="doppler effect diagram">
+  </div>
+  <div class="title-container is-flex">
+    <h1 class="title">doppler</h1>
+    <p class="subtitle">A social music app, connecting you with the latest sounds</p>
+  </div>
+  <nav ng-controller="appController as appCtrl">
+    <ul>
+      <li ng-class="{active: appCtrl.section === 'home'}" ng-click="appCtrl.updateSection('home')" ui-sref="DopplerParent.profile">home</li>
+      <li ng-class="{active: appCtrl.section === 'songs'}" ng-click="appCtrl.updateSection('songs')" ui-sref="DopplerParent.songs">songs</li>
+      <li ng-class="{active: appCtrl.section === 'friends'}" ng-click="appCtrl.updateSection('friends')" ui-sref="DopplerParent.friends">friends</li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="user-data-container is-flex">
+    <div class="avatar-container">
+      <img class="avatar" ng-src="{{songsCtrl.currentUser.avatar}}" alt="{{songsCtrl.currentUser.username}} avatar">
+    </div>
+    <div class="data-container is-flex">
+      <span class="user-nm is-flex">
+        {{songsCtrl.currentUser.name}}
+        <button ng-click="songsCtrl.userLogOut()" class="logout-btn">log out</button>
+      </span>
+      <span class="user-login-date">last login: {{songsCtrl.currentUser.lastLoginDate | date: "MMM dd hh:mma"}}</span>
+    </div>
+  </div>
+  <section class="songs-container">
+    <table class="songs-table">
+      <caption></caption>
+      <thead>
+        <tr>
+          <th></<th>
+          <th></<th>
+          <th class="sortable" ng-click="songsCtrl.updateTable('name')">track <img class="sort-icon" ng-class="{reverse: songsCtrl.orderByField === 'name' && !songsCtrl.reverseSort}" src="./images/sort-icon.png" alt="sort"></<th>
+          <th class="sortable" ng-click="songsCtrl.updateTable('duration')">duration <img class="sort-icon" ng-class="{reverse: songsCtrl.orderByField === 'duration' && !songsCtrl.reverseSort}" src="./images/sort-icon.png" alt="sort"></<th>
+          <th class="sortable" ng-click="songsCtrl.updateTable('artist_name')">artist <img class="sort-icon" ng-class="{reverse: songsCtrl.orderByField === 'artist_name' && !songsCtrl.reverseSort}" src="./images/sort-icon.png" alt="sort"></<th>
+          <th>more info</<th>
+          <th></<th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="is-centered" ng-repeat="song in songsCtrl.allSongs | orderBy: songsCtrl.orderByField:songsCtrl.reverseSort">
+          <td ng-class="{active: songsCtrl.currTrackSrc === song.preview_url && songsCtrl.playing}" ng-click="songsCtrl.play(song.preview_url); songsCtrl.playing = true" class="player-play">
+            <img src="./images/play-icon.png" alt="play-icon">
+          </td>
+          <td ng-class="{active: songsCtrl.currTrackSrc === song.preview_url && !songsCtrl.playing}" ng-click="songsCtrl.pause(song.preview_url); songsCtrl.playing = false" class="player-pause">
+            <img src="./images/pause-icon.png" alt="pause-icon">
+          </td>
+          <td class="track">{{song.name}}</td>
+          <td class="duration">{{song.duration}}</td>
+          <td class="artist">{{song.artist[0].name}}</td>
+          <td class="more"><a ui-sref="DopplerParent.songDetails({id: song.id})">more info</a></td>
+          <td ng-class="{active: songsCtrl.currentUser.songs.indexOf(song) !== -1}" ng-click="songsCtrl.toggleSaveSong(songsCtrl.currentUser, song)" class="player-save"><img src="./images/save-icon.png" alt="save-icon"></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>

@@ -1,0 +1,53 @@
+.song-details-container {
+  background: $slate;
+  border-radius: 25px;
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.details-container {
+  margin-bottom: 1rem;
+
+  .album-container {
+    width: 100%;
+
+    img {
+      border: 2px solid $light;
+    }
+
+    .release-info {
+      justify-content: space-between;
+      padding: 0 .5rem;
+    }
+  }
+
+  .artist-container {
+    flex-direction: column;
+    margin-left: 2rem;
+    width: 100%;
+  }
+}
+
+.player-container {
+  .player-controls {
+    justify-content: center;
+
+    div {
+      border: 2px solid $light;
+      cursor: pointer;
+      height: 150px;
+      padding: 1rem;
+      width: 150px;
+
+      &.active {
+        background: $orange;
+      }
+    }
+
+    .player-save {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

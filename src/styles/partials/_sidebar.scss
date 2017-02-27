@@ -1,0 +1,25 @@
+.user-data-container {
+
+  .avatar-container {
+    .avatar {
+      border-radius: 50%;
+      max-width: 100px;
+    }
+  }
+
+  .data-container {
+    flex-direction: column;
+    justify-content: center;
+    margin-left: .5rem;
+
+    .user-nm {
+      justify-content: space-between;
+
+      .logout-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
