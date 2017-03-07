@@ -23,13 +23,30 @@
     }
 
     .data-container {
+      margin-top: 1rem;
       width: 100%;
+
+      .user-nm, .user-login-date {
+        color: $orange;
+      }
+      .user-nm {
+        font-size: 1.5rem;
+        text-decoration: underline;
+      }
     }
   }
 
   .user-songs-container {
     li {
-      cursor: pointer;
+      a {
+        color: $sky;
+        cursor: pointer;
+
+        &:hover {
+          color: $orange;
+          text-decoration: underline;
+        }
+      }
     }
   }
 }

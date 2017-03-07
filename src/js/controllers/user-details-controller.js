@@ -1,19 +1,31 @@
 (function() {
-  angular.module('dopplerApp').controller('userDetailsController', function($stateParams, UserService, StorageService) {
+  angular.module('dopplerApp').controller('userDetailsController', function($q, $scope, $stateParams, UserService, SongsService, StorageService) {
     const userId = $stateParams.id;
 
-    this.currentUser = UserService.getCurrUser();
-    this.userToDisplay = UserService.userById(StorageService.get('all-users'), parseInt(userId, 10));
-    this.friendSongs = this.userToDisplay.songs;
-    console.log(this.userToDisplay);
+    $scope.currentUser = UserService.getCurrUser();
+    $scope.currentUserFriends = $scope.currentUser.friends;
+    $scope.userToDisplay = UserService.userById(StorageService.get('all-users'), parseInt(userId, 10));
+    $scope.userToDisplaySongs = $scope.userToDisplay.songs;
+    $scope.friendTracks = [];
 
-    this.hasFriend = UserService.userHasFriend(this.currentUser, this.userToDisplay);
-    this.toggleAddFriend = function() {
-      UserService.toggleFriend(this.currentUser, this.userToDisplay);
+    $q.when(SongsService.getSongs()).then((response) => {
+      $scope.allSongs = response.data.tracks;
+      for (let i = 0; i < $scope.allSongs.length; i++) {
+        if ($scope.userToDisplaySongs.indexOf($scope.allSongs[i].id) !== -1) {
+          $scope.friendTracks.push($scope.allSongs[i]);
+        }
+      }
+    }).catch((error) => {
+      console.log(error);
+    });
+    console.log($scope.userToDisplay);
+
+    $scope.toggleAddFriend = function(user, friendId) {
+      UserService.toggleFriend(user, friendId);
     }
 
-    this.userLogOut = function() {
-      UserService.logOut(this.currentUser);
+    $scope.userLogOut = function() {
+      UserService.logOut($scope.currentUser);
     }
   });
 })();

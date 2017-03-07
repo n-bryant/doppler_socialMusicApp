@@ -14,9 +14,9 @@
   </div>
   <nav ng-controller="appController as appCtrl">
     <ul>
-      <li ng-class="{active: appCtrl.section === 'home'}" ng-click="appCtrl.updateSection('home')" ui-sref="DopplerParent.profile">home</li>
-      <li ng-class="{active: appCtrl.section === 'songs'}" ng-click="appCtrl.updateSection('songs')" ui-sref="DopplerParent.songs">songs</li>
-      <li ng-class="{active: appCtrl.section === 'friends'}" ng-click="appCtrl.updateSection('friends')" ui-sref="DopplerParent.friends">friends</li>
+      <li ui-sref-active="active" ui-sref="DopplerParent.profile">home</li>
+      <li ui-sref-active="active" ui-sref="DopplerParent.songs">songs</li>
+      <li ui-sref-active="active" ui-sref="DopplerParent.friends">friends</li>
     </ul>
   </nav>
 </header>
@@ -25,39 +25,40 @@
   <div class="welcome-wrapper">
   <!-- welcome message -->
   <section class="welcome-container is-flex">
-    <h2 class="welcome-message">welcome <span>{{welcomeCtrl.currentUser.username}}</span></h2>
+    <h2 class="welcome-message">welcome <span>{{currentUser.username}}</span></h2>
     <ul class="welcome-stats-list">
-      <li>You have favorited {{welcomeCtrl.userSongCount}} songs.</li>
-      <li>You have {{welcomeCtrl.userFriendCount}} friends.</li>
+      <!-- need to set a way to update this value -->
+      <li class="song-count" ng-controller="songsController as songsCtrl">Number of favorited songs: {{userTrackCount}}</li>
+      <li>Number of friends: {{userFriendCount}}</li>
     </ul>
 
-    <section class="songs-container" ng-controller="songsController as songsCtrl" ng-show="songsCtrl.currentUserSongs.length">
+    <section class="songs-container" ng-controller="songsController as songsCtrl" ng-show="userTracks.length">
       <table class="songs-table">
         <caption></caption>
         <thead>
           <tr>
             <th></<th>
             <th></<th>
-            <th class="sortable" ng-click="songsCtrl.updateTable('name')">track <img class="sort-icon" ng-class="{reverse: songsCtrl.orderByField === 'name' && !songsCtrl.reverseSort}" src="./images/sort-icon.png" alt="sort"></<th>
-            <th class="sortable" ng-click="songsCtrl.updateTable('duration')">duration <img class="sort-icon" ng-class="{reverse: songsCtrl.orderByField === 'duration' && !songsCtrl.reverseSort}" src="./images/sort-icon.png" alt="sort"></<th>
-            <th class="sortable" ng-click="songsCtrl.updateTable('artist_name')">artist <img class="sort-icon" ng-class="{reverse: songsCtrl.orderByField === 'artist_name' && !songsCtrl.reverseSort}" src="./images/sort-icon.png" alt="sort"></<th>
+            <th class="sortable" ng-click="updateTable('name')">track <img class="sort-icon" ng-class="{reverse: orderByField === 'name' && !reverseSort}" src="./images/sort-icon.png" alt="sort"></<th>
+            <th class="sortable" ng-click="updateTable('duration')">duration <img class="sort-icon" ng-class="{reverse: orderByField === 'duration' && !reverseSort}" src="./images/sort-icon.png" alt="sort"></<th>
+            <th class="sortable" ng-click="updateTable('artist_name')">artist <img class="sort-icon" ng-class="{reverse: orderByField === 'artist_name' && !reverseSort}" src="./images/sort-icon.png" alt="sort"></<th>
             <th>more info</<th>
             <th></<th>
           </tr>
         </thead>
         <tbody>
-          <tr class="is-centered" ng-repeat="song in songsCtrl.currentUserSongs | orderBy: songsCtrl.orderByField:songsCtrl.reverseSort">
-            <td ng-class="{active: songsCtrl.currTrackSrc === song.preview_url && songsCtrl.playing}" ng-click="songsCtrl.play(song.preview_url); songsCtrl.playing = true" class="player-play">
+          <tr class="is-centered" ng-repeat="song in userTracks | orderBy: orderByField:reverseSort">
+            <td ng-class="{active: currTrackSrc === song.preview_url && playing}" ng-click="play(song.preview_url); playing = true" class="player-play">
               <img src="./images/play-icon.png" alt="play-icon">
             </td>
-            <td ng-class="{active: songsCtrl.currTrackSrc === song.preview_url && !songsCtrl.playing}" ng-click="songsCtrl.pause(song.preview_url); songsCtrl.playing = false" class="player-pause">
+            <td ng-class="{active: currTrackSrc === song.preview_url && !playing}" ng-click="pause(song.preview_url); playing = false" class="player-pause">
               <img src="./images/pause-icon.png" alt="pause-icon">
             </td>
             <td class="track">{{song.name}}</td>
             <td class="duration">{{song.duration}}</td>
             <td class="artist">{{song.artist[0].name}}</td>
-            <td class="more">more info</td>
-            <td ng-class="{active: songsCtrl.currentUser.songs.indexOf(song) !== -1}" ng-click="songsCtrl.toggleSaveSong(songsCtrl.currentUser, song)" class="player-save"><img src="./images/save-icon.png" alt="save-icon"></td>
+            <td class="more"><a ui-sref="DopplerParent.songDetails({id: song.id})">more info</a></td>
+            <td ng-class="{active: currentUserSongs.indexOf(song.id) !== -1}" ng-click="toggleSaveSong(currentUser, song.id)" class="player-save"><img src="./images/save-icon.png" alt="save-icon"></td>
           </tr>
         </tbody>
       </table>
@@ -69,22 +70,24 @@
   <section class="sidebar-container">
     <div class="user-data-container is-flex">
       <div class="avatar-container">
-        <img class="avatar" ng-src="{{welcomeCtrl.currentUser.avatar}}" alt="{{welcomeCtrl.currentUser.username}} avatar">
+        <img class="avatar" ng-src="{{currentUser.avatar}}" alt="{{currentUser.username}} avatar">
       </div>
       <div class="data-container is-flex">
         <span class="user-nm is-flex">
-          {{welcomeCtrl.currentUser.name}}
-          <button ng-click="welcomeCtrl.userLogOut()" class="logout-btn">log out</button>
+          {{currentUser.name}}
+          <button ng-click="userLogOut()" class="logout-btn">log out</button>
         </span>
-        <span class="user-login-date">last login: {{welcomeCtrl.currentUser.lastLoginDate | date: "MMM dd hh:mma"}}</span>
+        <span class="user-login-date">last login: {{currentUser.lastLoginDate | date: "MMM dd hh:mma"}}</span>
       </div>
     </div>
-    <aside class="online-friends-container dark-bottom-border">
-      <h3>Online Friends:</h3>
-      <ul ng-show="welcomeCtrl.onlineFriends.length" class="online-friends">
-        <li class="friend-container is-flex" ng-repeat="friend in welcomeCtrl.onlineFriends">
+    <aside class="online-friends-container">
+      <h3 class="dark-bottom-border">Online Friends:</h3>
+      <ul ng-show="onlineFriends.length" class="online-friends">
+        <li class="friend-container is-flex" ng-repeat="friend in onlineFriends">
           <div class="avatar-container">
-            <img class="avatar" ng-src="{{friend.avatar}}" alt="{{friend.username}} avatar">
+            <a ui-sref="DopplerParent.userDetails({id: friend.id})">
+              <img class="avatar" ng-src="{{friend.avatar}}" alt="{{friend.username}} avatar">
+            </a>
           </div>
           <div class="friend-info-container is-flex">
             <p class="username">{{friend.username}}</p>
@@ -92,12 +95,14 @@
         </li>
       </ul>
     </aside>
-    <aside class="offline-friends-container dark-bottom-border">
-      <h3>Offline Friends:</h3>
-      <ul ng-show="welcomeCtrl.offlineFriends.length" class="offline-friends">
-        <li class="friend-container is-flex" ng-repeat="friend in welcomeCtrl.offlineFriends">
+    <aside class="offline-friends-container">
+      <h3 class="dark-bottom-border">Offline Friends:</h3>
+      <ul ng-show="offlineFriends.length" class="offline-friends">
+        <li class="friend-container is-flex" ng-repeat="friend in offlineFriends">
           <div class="avatar-container">
-            <img class="avatar" ng-src="{{friend.avatar}}" alt="{{friend.username}} avatar">
+            <a ui-sref="DopplerParent.userDetails({id: friend.id})">
+              <img class="avatar" ng-src="{{friend.avatar}}" alt="{{friend.username}} avatar">
+            </a>
           </div>
           <div class="friend-info-container is-flex">
             <p class="username">{{friend.username}}</p>

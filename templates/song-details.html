@@ -8,9 +8,9 @@
   </div>
   <nav ng-controller="appController as appCtrl">
     <ul>
-      <li ng-class="{active: appCtrl.section === 'home'}" ng-click="appCtrl.updateSection('home')" ui-sref="DopplerParent.profile">home</li>
-      <li ng-class="{active: appCtrl.section === 'songs'}" ng-click="appCtrl.updateSection('songs')" ui-sref="DopplerParent.songs">songs</li>
-      <li ng-class="{active: appCtrl.section === 'friends'}" ng-click="appCtrl.updateSection('friends')" ui-sref="DopplerParent.friends">friends</li>
+      <li ui-sref-active="active" ui-sref="DopplerParent.profile">home</li>
+      <li ui-sref-active="active" ui-sref="DopplerParent.songs">songs</li>
+      <li ui-sref-active="active" ui-sref="DopplerParent.friends">friends</li>
     </ul>
   </nav>
 </header>
@@ -18,42 +18,42 @@
 <main>
   <div class="user-data-container is-flex">
     <div class="avatar-container">
-      <img class="avatar" ng-src="{{songDetCtrl.currentUser.avatar}}" alt="{{songDetCtrl.currentUser.username}} avatar">
+      <img class="avatar" ng-src="{{currentUser.avatar}}" alt="{{currentUser.username}} avatar">
     </div>
     <div class="data-container is-flex">
       <span class="user-nm is-flex">
-        {{songDetCtrl.currentUser.name}}
-        <button ng-click="songDetCtrl.userLogOut()" class="logout-btn">log out</button>
+        {{currentUser.name}}
+        <button ng-click="userLogOut()" class="logout-btn">log out</button>
       </span>
-      <span class="user-login-date">last login: {{songDetCtrl.currentUser.lastLoginDate | date: "MMM dd hh:mma"}}</span>
+      <span class="user-login-date">last login: {{currentUser.lastLoginDate | date: "MMM dd hh:mma"}}</span>
     </div>
   </div>
 
   <section class="song-details-container">
     <div class="details-container is-flex">
       <div class="album-container">
-        <img ng-src="{{songDetCtrl.song.artist[0].image}}">
+        <img ng-src="{{song.artist[0].image}}">
         <div class="release-info is-flex">
-          <span>{{songDetCtrl.song.album_name}}</span>
-          <span>release year: {{songDetCtrl.song.release_date}}</span>
+          <span>{{song.album_name}}</span>
+          <span>release year: {{song.release_date}}</span>
         </div>
       </div>
       <div class="artist-container is-flex">
-        <h2>{{songDetCtrl.song.artist[0].name}}</h2>
-        <span class="label">Label: {{songDetCtrl.song.label}}</span>
-        <p>{{songDetCtrl.song.artist[0].biography}}</p>
+        <h2>{{song.artist[0].name}}</h2>
+        <span class="label">Label: {{song.label}}</span>
+        <p>{{song.artist[0].biography}}</p>
       </div>
     </div>
     <div class="player-container">
-      <h3 class="song-title is-centered">{{songDetCtrl.song.name}}</h3>
+      <h3 class="song-title is-centered">{{song.name}}</h3>
       <div class="player-controls is-flex">
-        <div ng-class="{active: songDetCtrl.playing}" ng-click="songDetCtrl.play(songDetCtrl.song.preview_url); songDetCtrl.playing = true" class="player-play">
+        <div ng-class="{active: playing}" ng-click="play(song.preview_url)" class="player-play">
           <img src="./images/play-icon.png" alt="play-icon">
         </div>
-        <div ng-class="{active: !songDetCtrl.playing}" ng-click="songDetCtrl.pause(songDetCtrl.song.preview_url); songDetCtrl.playing = false" class="player-pause">
+        <div ng-class="{active: !playing}" ng-click="pause(song.preview_url)" class="player-pause">
           <img src="./images/pause-icon.png" alt="pause-icon">
         </div>
-        <div ng-class="{active: songDetCtrl.hasSong}" ng-click="songDetCtrl.toggleSaveSong(songDetCtrl.currentUser, songDetCtrl.song)" class="player-save is-flex">
+        <div ng-class="{active: currentUserSongs.indexOf(song.id) !== -1}" ng-click="toggleSaveSong(currentUser, song.id)" class="player-save is-flex">
           <img src="./images/save-icon.png" alt="save-icon">
         </div>
       </div>

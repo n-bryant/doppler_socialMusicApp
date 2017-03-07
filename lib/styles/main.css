@@ -175,13 +175,10 @@ song details
 /*
 user details
 */
-.friend-container .data-container h2 {
+.friend-container .data-container .user-nm {
   color: #FFA500;
   font: 600 3rem "Poppins", sans-serif;
   text-decoration: underline; }
-
-.friend-container .data-container .user-login-date {
-  color: #649AFF; }
 
 .friend-container .user-songs-container a {
   color: #fafafa;
@@ -263,7 +260,8 @@ header {
         background: #fafafa; }
 
 .welcome-wrapper {
-  margin-right: 400px; }
+  margin-right: 400px;
+  min-height: 100vh; }
 
 .welcome-container {
   align-items: center;
@@ -282,10 +280,10 @@ header {
 .sidebar-container {
   background: #649AFF;
   bottom: 0;
-  height: 100vh;
-  right: 0;
+  min-height: 100%;
   padding: 1rem;
   position: absolute;
+  right: 0;
   top: 0;
   width: 400px; }
 
@@ -299,10 +297,15 @@ header {
     flex-direction: column;
     justify-content: center;
     margin-left: .5rem; }
+  .online-friends-container h3, .offline-friends-container h3 {
+    margin-bottom: .5rem; }
 
 .offline-friends-container .avatar {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%); }
+
+.offline-friends-container h3 {
+  margin-bottom: .5rem; }
 
 .user-data-container .avatar-container .avatar {
   border-radius: 50%;
@@ -447,9 +450,19 @@ tbody tr:last-of-type {
         .full-user-container .user-data-container .avatar-container .add-friend-btn.active {
           background: #FFA500; }
     .full-user-container .user-data-container .data-container {
+      margin-top: 1rem;
       width: 100%; }
-  .full-user-container .user-songs-container li {
+      .full-user-container .user-data-container .data-container .user-nm, .full-user-container .user-data-container .data-container .user-login-date {
+        color: #FFA500; }
+      .full-user-container .user-data-container .data-container .user-nm {
+        font-size: 1.5rem;
+        text-decoration: underline; }
+  .full-user-container .user-songs-container li a {
+    color: #649AFF;
     cursor: pointer; }
+    .full-user-container .user-songs-container li a:hover {
+      color: #FFA500;
+      text-decoration: underline; }
 
 .is-centered {
   text-align: center; }

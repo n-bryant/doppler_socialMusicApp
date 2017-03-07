@@ -1,18 +1,20 @@
 (function() {
-  angular.module('dopplerApp').controller('friendsController', function(UserService, StorageService) {
-    this.currentUser = UserService.getCurrUser();
+  angular.module('dopplerApp').controller('friendsController', function($scope, UserService, StorageService) {
+    $scope.currentUser = UserService.getCurrUser();
+    $scope.currentUserFriends = $scope.currentUser.friends;
+    $scope.userFriends = [];
 
     // sets list of other users aside from the current user
-    this.allUsers = StorageService.get('all-users');
-    let currUserIndex = this.allUsers.indexOf(this.currentUser);
-    this.allUsers.splice(currUserIndex, 1);
+    $scope.allUsers = StorageService.get('all-users');
+    let currUserIndex = $scope.allUsers.indexOf($scope.currentUser);
+    $scope.allUsers.splice(currUserIndex, 1);
 
-    this.toggleAddFriend = function(user, friend) {
-      UserService.toggleFriend(user, friend);
+    $scope.toggleAddFriend = function(user, friendId) {
+      UserService.toggleFriend(user, friendId);
     };
 
-    this.userLogOut = function() {
-      UserService.logOut(this.currentUser);
+    $scope.userLogOut = function() {
+      UserService.logOut($scope.currentUser);
     };
   });
 })();

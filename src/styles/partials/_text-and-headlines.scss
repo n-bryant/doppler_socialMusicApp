@@ -189,13 +189,10 @@ user details
 */
 .friend-container {
   .data-container {
-    h2 {
+    .user-nm {
       color: $orange;
       font: 600 3rem $primaryFont;
       text-decoration: underline;
-    }
-    .user-login-date {
-      color: $sky;
     }
   }
 

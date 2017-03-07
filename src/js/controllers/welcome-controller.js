@@ -1,15 +1,27 @@
 (function() {
-  angular.module('dopplerApp').controller('welcomeController', function($q, UserService, StorageService) {
+  angular.module('dopplerApp').controller('welcomeController', function($scope, $q, UserService, StorageService) {
     // bring in most recent user information
-    this.currentUser = UserService.getCurrUser();
+    $scope.currentUser = UserService.getCurrUser();
+    $scope.currentUserFriends = $scope.currentUser.friends;
+    $scope.userFriendCount = $scope.currentUserFriends.length;
+    $scope.onlineFriends = [];
+    $scope.offlineFriends = [];
 
-    this.userFriendCount = this.currentUser.friends.length;
-    this.userSongCount = this.currentUser.songs.length;
-    this.onlineFriends = UserService.getOnlineList(this.currentUser.friends, true);
-    this.offlineFriends = UserService.getOnlineList(this.currentUser.friends, false);
+    $scope.allUsers = StorageService.get('all-users');
+    let currUserIndex = $scope.allUsers.indexOf($scope.currentUser);
+    $scope.allUsers.splice(currUserIndex, 1);
 
-    this.userLogOut = function() {
-      UserService.logOut(this.currentUser);
+    // get list of user's friends by id
+    for (let i = 0; i < $scope.allUsers.length; i++) {
+      if ($scope.currentUserFriends.indexOf($scope.allUsers[i].id) !== -1 && $scope.allUsers[i].loggedIn) {
+        $scope.onlineFriends.push($scope.allUsers[i]);
+      } else if ($scope.currentUserFriends.indexOf($scope.allUsers[i].id) !== -1 && !$scope.allUsers[i].loggedIn) {
+        $scope.offlineFriends.push($scope.allUsers[i]);
+      }
+    }
+
+    $scope.userLogOut = function() {
+      UserService.logOut($scope.currentUser);
     };
   });
 })();

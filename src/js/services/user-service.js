@@ -16,21 +16,21 @@
       });
     }
 
-    // returns an array of a user's logged in friend user objects
-    function getOnlineFriends(friendsList, online) {
-      let onlineList = [];
-      let offlineList = [];
-
-      friendsList.forEach((friend) => {
-        if (friend.loggedIn) {
-          onlineList.push(friend);
-        } else {
-          offlineList.push(friend);
-        }
-      });
-
-      return online ? onlineList : offlineList;
-    }
+    // // returns an array of a user's logged in friend user objects
+    // function getOnlineFriends(friendsList, online) {
+    //   let onlineList = [];
+    //   let offlineList = [];
+    //
+    //   friendsList.forEach((friend) => {
+    //     if (friend.loggedIn) {
+    //       onlineList.push(friend);
+    //     } else {
+    //       offlineList.push(friend);
+    //     }
+    //   });
+    //
+    //   return online ? onlineList : offlineList;
+    // }
 
     // gets user by id
     function getUserById(userArray, id) {
@@ -75,34 +75,12 @@
       return user;
     }
 
-    // checks if user has a friend
-    function userHasFriend(user, friend) {
-      for (let i = 0; i < user.friends.length; i++) {
-        if (user.friends[i].id === friend.id) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-    }
-
-    // checks if user has a song
-    function userHasSong(user, song) {
-      for (let i = 0; i < user.songs.length; i++) {
-        if (user.songs[i].name === song.name) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-    }
-
     // toggles a user's friend status
-    function userToggleFriend(user, friend) {
-      if (user.friends.indexOf(friend) === -1) {
-        user.friends.push(friend);
+    function userToggleFriend(user, friendId) {
+      if (user.friends.indexOf(friendId) === -1) {
+        user.friends.push(friendId);
       } else {
-        let index = user.friends.indexOf(friend);
+        let index = user.friends.indexOf(friendId);
         user.friends.splice(index, 1);
       }
 
@@ -113,11 +91,11 @@
     }
 
     // toggles a user like on a song
-    function userToggleSong(user, song) {
-      if (user.songs.indexOf(song) === -1) {
-        user.songs.push(song);
+    function userToggleSong(user, songId) {
+      if (user.songs.indexOf(songId) === -1) {
+        user.songs.push(songId);
       } else {
-        let index = user.songs.indexOf(song);
+        let index = user.songs.indexOf(songId);
         user.songs.splice(index, 1);
       }
 
@@ -125,6 +103,8 @@
       let userToUpdate = getUserById(allUsers, user.id);
       angular.copy(user, userToUpdate);
       StorageService.set('all-users', allUsers);
+
+      return user.songs;
     }
 
     return {
@@ -133,11 +113,9 @@
       getUserData: getUserData,
       newUser: setNewUser,
       logOut: logOutUser,
-      getOnlineList: getOnlineFriends,
+      // getOnlineList: getOnlineFriends,
       toggleFriend: userToggleFriend,
       toggleSong: userToggleSong,
-      userHasSong: userHasSong,
-      userHasFriend: userHasFriend,
       userById: getUserById
     };
   });
