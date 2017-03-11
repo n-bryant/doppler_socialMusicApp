@@ -1,12 +1,15 @@
 // current user display
-.user-data-container {
-  margin: 1rem 0 1rem 1rem;
+.songs-list-wrapper {
+  .user-data-container {
+    margin: 1rem auto;
+  }
 }
 
 // track list
 .songs-container {
   margin: 2rem auto;
   max-width: 800px;
+  overflow-x: auto;
   width: 85%;
 
   .songs-table {
@@ -30,6 +33,7 @@ tr {
   }
 
   td {
+    min-width: 85px;
     padding: 1rem;
     vertical-align: middle;
 

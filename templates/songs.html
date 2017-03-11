@@ -1,20 +1,16 @@
-<!--
-  /songs:
-    -should list all songs, including a song title and artist name. You can use whatever songs you want.
-    -Songs should be sortable by at least song title and artist name.
-    -You should be able to see a detailed view for songs by clicking on a song name.
--->
-
+<!-- Songs List -->
 <header class="is-flex">
-  <div class="logo-container">
-    <img class="logo" src="images/logo.gif" alt="doppler effect diagram">
-  </div>
-  <div class="title-container is-flex">
-    <h1 class="title">doppler</h1>
-    <p class="subtitle">A social music app, connecting you with the latest sounds</p>
+  <div class="header-content-wrapper is-flex">
+    <div class="logo-container">
+      <img class="logo" src="images/logo.gif" alt="doppler effect diagram">
+    </div>
+    <div class="title-container is-flex">
+      <h1 class="title">doppler</h1>
+      <p class="subtitle">A social music app, connecting you with the latest sounds</p>
+    </div>
   </div>
   <nav ng-controller="appController as appCtrl">
-    <ul>
+    <ul class="nav-list is-flex">
       <li ui-sref-active="active" ui-sref="DopplerParent.profile">home</li>
       <li ui-sref-active="active" ui-sref="DopplerParent.songs">songs</li>
       <li ui-sref-active="active" ui-sref="DopplerParent.friends">friends</li>
@@ -22,7 +18,7 @@
   </nav>
 </header>
 
-<main>
+<main class="songs-list-wrapper">
   <div class="user-data-container is-flex">
     <div class="avatar-container">
       <img class="avatar" ng-src="{{currentUser.avatar}}" alt="{{currentUser.username}} avatar">

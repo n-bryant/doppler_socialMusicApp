@@ -8,8 +8,6 @@
     // default url path
     $urlRouterProvider.otherwise('/');
 
-    // NEED TO FIX ACTIVE TAB CONFIGURATION
-    // HAVE SONG 'MORE INFO' BUTTON AND USER 'AVATAR's LINK TO URLS WITH MORE DETAILS
     // state declaration
     $stateProvider.state('DopplerParent', {
       url: '/',
@@ -22,28 +20,23 @@
     }).state('DopplerParent.profile', {
       url: 'profile',
       controller: 'welcomeController as welcomeCtrl',
-      templateUrl: './templates/welcome.html',
-      activeTab: 'home'
+      templateUrl: './templates/welcome.html'
     }).state('DopplerParent.songs', {
       url: 'songs',
       controller: 'songsController as songsCtrl',
-      templateUrl: './templates/songs.html',
-      activeTab: 'songs'
+      templateUrl: './templates/songs.html'
     }).state('DopplerParent.friends', {
       url: 'friends',
       controller: 'friendsController as friendsCtrl',
-      templateUrl: './templates/friends.html',
-      activeTab: 'friends'
+      templateUrl: './templates/friends.html'
     }).state('DopplerParent.userDetails', {
       url: 'user-details/:id',
       templateUrl: './templates/user-details.html',
-      controller: 'userDetailsController as userDetCtrl',
-      activeTab: 'friends'
+      controller: 'userDetailsController as userDetCtrl'
     }).state('DopplerParent.songDetails', {
       url: 'song-details/:id',
       templateUrl: './templates/song-details.html',
-      controller: 'songDetailsController as songDetCtrl',
-      activeTab: 'songs'
+      controller: 'songDetailsController as songDetCtrl'
     });
   });
 })();

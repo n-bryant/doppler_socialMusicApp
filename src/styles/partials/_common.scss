@@ -6,3 +6,34 @@ background-image: url("https://www.transparenttextures.com/patterns/whitey.png")
 main {
   position: relative;
 }
+
+.user-data-container {
+  @include bp(mobile) {
+    margin: 0 auto 1rem auto;
+    justify-content: center;
+    width: 85%;
+  }
+
+  .avatar-container {
+    .avatar {
+      border-radius: 50%;
+      max-width: 100px;
+    }
+  }
+
+  .data-container {
+    flex-direction: column;
+    justify-content: center;
+    margin-left: .5rem;
+
+    .user-nm {
+      justify-content: space-between;
+
+      .logout-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -4,28 +4,49 @@ header {
   padding: 2rem;
   position: relative;
 
-  .logo-container {
-    max-width: 230px;
-    .logo {
-      background: $sky;
-      border: 6px solid $light;
-      border-radius: 2rem;
-      display: block;
-      width: 100%;
+  .header-content-wrapper {
+    @include bp(mobile) {
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-around;
+      margin: 0 auto 1rem auto;
+      position: relative;
+      width: 85%;
+    }
+    @include bp(medium) {
+      flex-direction: row;
+      max-width: 1200px;
+    }
+
+    .logo-container {
+      max-width: 230px;
+      min-width: 230px;
+
+      .logo {
+        background: $sky;
+        border: 6px solid $light;
+        border-radius: 2rem;
+        display: block;
+        width: 100%;
+      }
+    }
+
+    .title-container {
+      align-items: center;
+      flex-direction: column;
     }
   }
+}
 
-  .title-container {
-    align-items: center;
-    flex-direction: column;
-    justify-content: flex-end;
-    margin-left: auto;
-  }
+nav {
+  bottom: 0;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 50%;
 
-  nav {
-    padding-right: 1rem;
-    position: absolute;
-    right: 0;
+  .nav-list {
+    justify-content: space-around;
 
     li {
       cursor: pointer;

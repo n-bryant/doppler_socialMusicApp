@@ -1,19 +1,17 @@
-<!--
-  /home:
-    -Should say "Welcome, {{ username }}, you have {{ numSongs }} songs and {{ numFriends }} friends."
-    -You can hard code the username.
--->
+<!-- Profile -->
 
 <header class="is-flex">
-  <div class="logo-container">
-    <img class="logo" src="images/logo.gif" alt="doppler effect diagram">
-  </div>
-  <div class="title-container is-flex">
-    <h1 class="title">doppler</h1>
-    <p class="subtitle">A social music app, connecting you with the latest sounds</p>
+  <div class="header-content-wrapper is-flex">
+    <div class="logo-container">
+      <img class="logo" src="images/logo.gif" alt="doppler effect diagram">
+    </div>
+    <div class="title-container is-flex">
+      <h1 class="title">doppler</h1>
+      <p class="subtitle">A social music app, connecting you with the latest sounds</p>
+    </div>
   </div>
   <nav ng-controller="appController as appCtrl">
-    <ul>
+    <ul class="nav-list is-flex">
       <li ui-sref-active="active" ui-sref="DopplerParent.profile">home</li>
       <li ui-sref-active="active" ui-sref="DopplerParent.songs">songs</li>
       <li ui-sref-active="active" ui-sref="DopplerParent.friends">friends</li>
@@ -34,7 +32,7 @@
 
     <section class="songs-container" ng-controller="songsController as songsCtrl" ng-show="userTracks.length">
       <table class="songs-table">
-        <caption></caption>
+        <caption class="is-hidden">user songs</caption>
         <thead>
           <tr>
             <th></<th>

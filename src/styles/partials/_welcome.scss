@@ -1,6 +1,13 @@
 .welcome-wrapper {
-  margin-right: 400px;
-  min-height: 100vh;
+
+  @include bp(mobile) {
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 1rem;
+  }
+  @include bp(full) {
+    margin-right: 325px;
+  }
 }
 
 // welcome message
@@ -21,6 +28,7 @@
   }
 
   .songs-container {
+    overflow-x: auto;
     width: 100%;
   }
 }
@@ -28,13 +36,19 @@
 // general sidebar
 .sidebar-container {
   background: $sky;
-  bottom: 0;
-  min-height: 100%;
   padding: 1rem;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 400px;
+
+  @include bp(mobile) {
+    width: 100%;
+  }
+  @include bp(full) {
+    bottom: 0;
+    min-height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 325px;
+  }
 }
 
 // friends list

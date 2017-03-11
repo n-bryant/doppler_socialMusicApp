@@ -1,24 +1,31 @@
-.user-data-container {
-
-  .avatar-container {
-    .avatar {
-      border-radius: 50%;
-      max-width: 100px;
+.sidebar-container {
+  .user-data-container {
+    @include bp(mobile) {
+      margin: 0 auto 1rem auto;
+      justify-content: center;
+      width: 85%;
     }
-  }
 
-  .data-container {
-    flex-direction: column;
-    justify-content: center;
-    margin-left: .5rem;
+    .avatar-container {
+      .avatar {
+        border-radius: 50%;
+        max-width: 100px;
+      }
+    }
 
-    .user-nm {
-      justify-content: space-between;
+    .data-container {
+      flex-direction: column;
+      justify-content: center;
+      margin-left: .5rem;
 
-      .logout-btn {
-        background: none;
-        border: none;
-        cursor: pointer;
+      .user-nm {
+        justify-content: space-between;
+
+        .logout-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+        }
       }
     }
   }

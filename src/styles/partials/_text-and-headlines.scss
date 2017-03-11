@@ -71,8 +71,13 @@ welcome page
 */
 .welcome-container {
   .welcome-message {
-    font: 800 5rem $primaryFont;
     text-transform: uppercase;
+    @include bp(mobile) {
+      font: 800 3rem $primaryFont;
+    }
+    @include bp(large) {
+      font: 800 5rem $primaryFont;
+    }
 
     span {
       color: $sky;
@@ -83,7 +88,12 @@ welcome page
 
   .welcome-stats-list {
     li {
-      font-size: 1.5rem;
+      @include bp(mobile) {
+        font-size: 1rem;
+      }
+      @include bp(large) {
+        font-size: 1.5rem;
+      }
     }
   }
 }

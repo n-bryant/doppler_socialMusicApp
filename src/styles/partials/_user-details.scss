@@ -1,3 +1,9 @@
+.user-details-wrapper {
+  .user-data-container {
+    margin: 1rem auto;
+  }
+}
+
 .full-user-container {
   @extend .song-details-container;
   position: relative;

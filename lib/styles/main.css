@@ -105,15 +105,25 @@ login page
 welcome page
 */
 .welcome-container .welcome-message {
-  font: 800 5rem "Poppins", sans-serif;
   text-transform: uppercase; }
+  @media screen and (min-width: 320px) {
+    .welcome-container .welcome-message {
+      font: 800 3rem "Poppins", sans-serif; } }
+  @media screen and (min-width: 820px) {
+    .welcome-container .welcome-message {
+      font: 800 5rem "Poppins", sans-serif; } }
   .welcome-container .welcome-message span {
     color: #649AFF;
     font: 300 3rem "Poppins", sans-serif;
     text-transform: lowercase; }
 
-.welcome-container .welcome-stats-list li {
-  font-size: 1.5rem; }
+@media screen and (min-width: 320px) {
+  .welcome-container .welcome-stats-list li {
+    font-size: 1rem; } }
+
+@media screen and (min-width: 820px) {
+  .welcome-container .welcome-stats-list li {
+    font-size: 1.5rem; } }
 
 /*
 sidebar
@@ -193,75 +203,144 @@ body {
 main {
   position: relative; }
 
+@media screen and (min-width: 320px) {
+  .user-data-container {
+    margin: 0 auto 1rem auto;
+    justify-content: center;
+    width: 85%; } }
+
+.user-data-container .avatar-container .avatar {
+  border-radius: 50%;
+  max-width: 100px; }
+
+.user-data-container .data-container {
+  flex-direction: column;
+  justify-content: center;
+  margin-left: .5rem; }
+  .user-data-container .data-container .user-nm {
+    justify-content: space-between; }
+    .user-data-container .data-container .user-nm .logout-btn {
+      background: none;
+      border: none;
+      cursor: pointer; }
+
 header {
   background: #262626;
   overflow: hidden;
   padding: 2rem;
   position: relative; }
-  header .logo-container {
-    max-width: 230px; }
-    header .logo-container .logo {
+  @media screen and (min-width: 320px) {
+    header .header-content-wrapper {
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-around;
+      margin: 0 auto 1rem auto;
+      position: relative;
+      width: 85%; } }
+  @media screen and (min-width: 670px) {
+    header .header-content-wrapper {
+      flex-direction: row;
+      max-width: 1200px; } }
+  header .header-content-wrapper .logo-container {
+    max-width: 230px;
+    min-width: 230px; }
+    header .header-content-wrapper .logo-container .logo {
       background: #649AFF;
       border: 6px solid #fafafa;
       border-radius: 2rem;
       display: block;
       width: 100%; }
-  header .title-container {
+  header .header-content-wrapper .title-container {
     align-items: center;
-    flex-direction: column;
-    justify-content: flex-end;
-    margin-left: auto; }
-  header nav {
-    padding-right: 1rem;
-    position: absolute;
-    right: 0; }
-    header nav li {
+    flex-direction: column; }
+
+nav {
+  bottom: 0;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 50%; }
+  nav .nav-list {
+    justify-content: space-around; }
+    nav .nav-list li {
       cursor: pointer; }
-      header nav li:hover {
+      nav .nav-list li:hover {
         text-decoration: underline; }
+
+.login-wrapper {
+  margin: 0 auto;
+  max-width: 1200px; }
 
 .about-container {
   flex-direction: column;
-  float: left;
-  padding: 4rem;
-  width: 50%; }
+  padding: 4rem; }
+  @media screen and (min-width: 670px) {
+    .about-container {
+      margin: 0 auto;
+      width: 85%; } }
+  @media screen and (min-width: 820px) {
+    .about-container {
+      float: left;
+      width: 50%; } }
   .about-container h2 {
     margin-bottom: .5rem;
     text-align: center; }
+  .about-container p a {
+    color: #649AFF; }
+    .about-container p a:hover {
+      text-decoration: underline; }
   .about-container p:first-of-type {
     margin-bottom: 1rem; }
 
-.login-container {
-  float: right;
-  width: 50%; }
-  .login-container .login-form {
-    align-items: center;
+@media screen and (min-width: 320px) {
+  .login-container {
+    width: 100%; } }
+
+@media screen and (min-width: 670px) {
+  .login-container {
+    margin: 0 auto;
+    min-width: 350px;
+    width: 85%; } }
+
+@media screen and (min-width: 820px) {
+  .login-container {
+    float: right;
+    width: 50%; } }
+
+.login-container .login-form {
+  align-items: center;
+  background: #262626;
+  border: 6px solid #649AFF;
+  border-radius: 2rem;
+  height: 400px;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5rem 2rem; }
+  .login-container .login-form input {
+    background: #fafafa;
+    border: 6px solid #649AFF;
+    display: block;
+    margin: .5rem auto 1rem auto;
+    padding: .25rem; }
+  .login-container .login-form button {
     background: #262626;
     border: 6px solid #649AFF;
     border-radius: 2rem;
-    height: 400px;
-    flex-direction: column;
-    justify-content: center;
-    margin: 3rem; }
-    .login-container .login-form input {
-      background: #fafafa;
-      border: 6px solid #649AFF;
-      display: block;
-      margin: .5rem auto 1rem auto;
-      padding: .25rem; }
-    .login-container .login-form button {
-      background: #262626;
-      border: 6px solid #649AFF;
-      border-radius: 2rem;
-      cursor: pointer; }
-      .login-container .login-form button:disabled {
-        cursor: not-allowed; }
-      .login-container .login-form button:active {
-        background: #fafafa; }
+    cursor: pointer; }
+    .login-container .login-form button:disabled {
+      cursor: not-allowed; }
+    .login-container .login-form button:active {
+      background: #fafafa; }
 
-.welcome-wrapper {
-  margin-right: 400px;
-  min-height: 100vh; }
+@media screen and (min-width: 320px) {
+  .welcome-wrapper {
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 1rem; } }
+
+@media screen and (min-width: 1060px) {
+  .welcome-wrapper {
+    margin-right: 325px; } }
 
 .welcome-container {
   align-items: center;
@@ -275,17 +354,23 @@ header {
     .welcome-container .welcome-stats-list li {
       margin-left: 5rem; }
   .welcome-container .songs-container {
+    overflow-x: auto;
     width: 100%; }
 
 .sidebar-container {
   background: #649AFF;
-  bottom: 0;
-  min-height: 100%;
-  padding: 1rem;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 400px; }
+  padding: 1rem; }
+  @media screen and (min-width: 320px) {
+    .sidebar-container {
+      width: 100%; } }
+  @media screen and (min-width: 1060px) {
+    .sidebar-container {
+      bottom: 0;
+      min-height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 325px; } }
 
 .online-friends-container, .offline-friends-container {
   margin-bottom: 1rem; }
@@ -307,27 +392,34 @@ header {
 .offline-friends-container h3 {
   margin-bottom: .5rem; }
 
-.user-data-container .avatar-container .avatar {
+@media screen and (min-width: 320px) {
+  .sidebar-container .user-data-container {
+    margin: 0 auto 1rem auto;
+    justify-content: center;
+    width: 85%; } }
+
+.sidebar-container .user-data-container .avatar-container .avatar {
   border-radius: 50%;
   max-width: 100px; }
 
-.user-data-container .data-container {
+.sidebar-container .user-data-container .data-container {
   flex-direction: column;
   justify-content: center;
   margin-left: .5rem; }
-  .user-data-container .data-container .user-nm {
+  .sidebar-container .user-data-container .data-container .user-nm {
     justify-content: space-between; }
-    .user-data-container .data-container .user-nm .logout-btn {
+    .sidebar-container .user-data-container .data-container .user-nm .logout-btn {
       background: none;
       border: none;
       cursor: pointer; }
 
-.user-data-container {
-  margin: 1rem 0 1rem 1rem; }
+.songs-list-wrapper .user-data-container {
+  margin: 1rem auto; }
 
 .songs-container {
   margin: 2rem auto;
   max-width: 800px;
+  overflow-x: auto;
   width: 85%; }
   .songs-container .songs-table .sortable {
     cursor: pointer; }
@@ -341,6 +433,7 @@ tr th, tr td {
   width: 150px; }
 
 tr td {
+  min-width: 85px;
   padding: 1rem;
   vertical-align: middle; }
   tr td.player-play, tr td.player-pause, tr td.player-save {
@@ -366,6 +459,9 @@ tbody tr:nth-of-type(even) {
 
 tbody tr:last-of-type {
   border-bottom: 4px solid #fafafa; }
+
+.friends-wrapper .user-data-container {
+  margin: 1rem auto; }
 
 .other-users-container {
   flex-wrap: wrap;
@@ -399,6 +495,9 @@ tbody tr:last-of-type {
       .other-users-container .data-container .add-friend-btn.active {
         background: #FFA500; }
 
+.song-details-wrapper .user-data-container {
+  margin: 1rem auto; }
+
 .song-details-container, .full-user-container {
   background: #262626;
   border-radius: 25px;
@@ -408,17 +507,32 @@ tbody tr:last-of-type {
 
 .details-container {
   margin-bottom: 1rem; }
-  .details-container .album-container {
-    width: 100%; }
-    .details-container .album-container img {
-      border: 2px solid #fafafa; }
-    .details-container .album-container .release-info {
-      justify-content: space-between;
-      padding: 0 .5rem; }
-  .details-container .artist-container {
-    flex-direction: column;
-    margin-left: 2rem;
-    width: 100%; }
+  @media screen and (min-width: 320px) {
+    .details-container {
+      align-items: center;
+      flex-direction: column; } }
+  @media screen and (min-width: 670px) {
+    .details-container {
+      flex-direction: row; } }
+  @media screen and (min-width: 320px) {
+    .details-container .album-container {
+      margin-top: 2rem;
+      width: 100%; } }
+  @media screen and (min-width: 670px) {
+    .details-container .album-container {
+      margin-top: 0; } }
+  .details-container .album-container img {
+    border: 2px solid #fafafa; }
+  .details-container .album-container .release-info {
+    justify-content: space-between;
+    padding: 0 .5rem; }
+  @media screen and (min-width: 320px) {
+    .details-container .artist-container {
+      flex-direction: column;
+      width: 100%; } }
+  @media screen and (min-width: 670px) {
+    .details-container .artist-container {
+      margin-right: 2rem; } }
 
 .player-container .player-controls {
   justify-content: center; }
@@ -433,6 +547,9 @@ tbody tr:last-of-type {
   .player-container .player-controls .player-save {
     align-items: center;
     justify-content: center; }
+
+.user-details-wrapper .user-data-container {
+  margin: 1rem auto; }
 
 .full-user-container {
   position: relative; }

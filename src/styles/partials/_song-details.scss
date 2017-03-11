@@ -1,3 +1,9 @@
+.song-details-wrapper {
+  .user-data-container {
+    margin: 1rem auto;
+  }
+}
+
 .song-details-container {
   background: $slate;
   border-radius: 25px;
@@ -8,9 +14,22 @@
 
 .details-container {
   margin-bottom: 1rem;
+  @include bp(mobile) {
+    align-items: center;
+    flex-direction: column;
+  }
+  @include bp(medium) {
+    flex-direction: row;
+  }
 
   .album-container {
-    width: 100%;
+    @include bp(mobile) {
+      margin-top: 2rem;
+      width: 100%;
+    }
+    @include bp(medium) {
+      margin-top: 0;
+    }
 
     img {
       border: 2px solid $light;
@@ -23,9 +42,13 @@
   }
 
   .artist-container {
-    flex-direction: column;
-    margin-left: 2rem;
-    width: 100%;
+    @include bp(mobile) {
+      flex-direction: column;
+      width: 100%;
+    }
+    @include bp(medium) {
+      margin-right: 2rem;
+    }
   }
 }
 
